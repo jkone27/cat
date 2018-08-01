@@ -1,0 +1,11 @@
+language: csharp
+solution: Cat.sln
+dotnet: 2.0.0
+sudo: required
+mono: latest
+branches:
+  only:
+    - master
+script:
+  - dotnet build
+  - dotnet test ./Tests
