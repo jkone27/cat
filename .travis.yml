@@ -8,4 +8,4 @@ branches:
     - master
 script:
   - dotnet build
-  - dotnet test ./Tests
+  - dotnet test ./Cat.Test
