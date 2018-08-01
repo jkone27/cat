@@ -1,7 +1,7 @@
-# CAT
-C# abstract types - dotnetstandard 1.0
+# CAT  
+C# abstract types - dotnetstandard 1.0  
 
-<img src="./Pics/Cat01.png?raw=true" width="100%" height="100%"/>
+![cat](Pics/Cat01.png?raw=true "cat")  
 
 ## Option
 simulates maybe type with inheritance
