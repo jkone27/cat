@@ -1,7 +1,7 @@
 language: csharp
 solution: Cat.sln
 dotnet: 2.0.0
-sudo: required
+mono: none
 branches:
   only:
     - master
