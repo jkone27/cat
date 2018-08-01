@@ -1,2 +1,2 @@
 # cat
-C# abstract types
+C# abstract types - dotnetstandard 1.0
