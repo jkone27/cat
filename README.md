@@ -13,8 +13,7 @@ tries to implement Choice/Either type, strict has more static "strictness",
 wheras Loose is more dynamic (using interface inheritance polymorphism)
 
 ### Status
-[![Build Status](https://img.shields.io/travis/jkone27/cat.svg)](https://travis-ci.org/jkone27/cat)
-
+![](https://img.shields.io/travis/jkone27/cat.svg)
 
 #### CatCat
 https://www.nuget.org/packages/CatCat/
