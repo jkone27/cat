@@ -33,6 +33,10 @@ namespace Cat.Core.Result.Loose
             this IResult result, 
             Func<TOk, TNext> onNext)
         {
+            if(typeof(TNext) is IResult)
+            {
+                throw new ArgumentException($"TNext type should not be IResult, use ThenLift instead.");
+            }
             return result.IsSuccess ?
                 onNext(result.Unwrap<TOk>()).ToSuccess() 
                 : result as IResult;
