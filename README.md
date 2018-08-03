@@ -3,7 +3,7 @@ C# abstract types - dotnetstandard 1.0
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/jkone27/cat/issues)
 
 
-![](Pics/Cat01.PNG)
+![](https://raw.githubusercontent.com/jkone27/cat/master/Pics/Cat01.PNG)
 
 ## Option
 simulates maybe type with inheritance
