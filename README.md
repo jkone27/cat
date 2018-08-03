@@ -1,6 +1,7 @@
 # CAT  
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/jkone27/cat/issues)  
 C# abstract types - dotnetstandard 1.0  
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/jkone27/cat/issues)
+*- Inspired by FP, F# lang and [ROP](https://fsharpforfunandprofit.com/rop/) -*  
 
 
 ![](https://raw.githubusercontent.com/jkone27/cat/master/Pics/Cat01.PNG)
