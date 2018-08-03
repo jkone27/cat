@@ -1,14 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard1.0</TargetFramework>
     <PackageId>CatCat</PackageId>
     <Description>Cat stands for C# Abstract Types. Contains an Option-Maybe type and a Result-Choice type.</Description>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <Authors>jkone27</Authors>
     <Company>no-company</Company>
     <PackageProjectUrl>https://github.com/jkone27/cat</PackageProjectUrl>
     <RepositoryUrl>https://github.com/jkone27/cat</RepositoryUrl>
     <PackageLicenseUrl>https://raw.githubusercontent.com/jkone27/cat/master/LICENSE</PackageLicenseUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/jkone27/cat/master/Pics/Cat01.PNG?raw=true</PackageIconUrl>
   </PropertyGroup>
 </Project>

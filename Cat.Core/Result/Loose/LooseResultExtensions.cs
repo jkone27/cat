@@ -38,6 +38,23 @@ namespace Cat.Core.Result.Loose
                 : result as IResult;
         }
 
+        /// <summary>
+        /// Bind - lifts IResult
+        /// </summary>
+        /// <param name="result"></param>
+        /// <param name="Func<TOk"></param>
+        /// <param name="onNext"></param>
+        /// <typeparam name="TOk"></typeparam>
+        /// <returns></returns>
+         public static IResult ThenLift<TOk>(
+            this IResult result, 
+            Func<TOk, IResult> onNext)
+        {
+            return result.IsSuccess ?
+                onNext(result.Unwrap<TOk>())
+                : result as IResult;
+        }
+
         public static void Check<TOk, TError>(this IResult<TOk, TError> result, Action<TError> onError)
         {
             if (!result.IsSuccess)

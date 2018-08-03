@@ -35,6 +35,27 @@ namespace Cat.Core.Result.Strict
                     as IResult<TNext,TError>;
         }
 
+           /// <summary>
+        /// Bind - lifts IResult
+        /// </summary>
+        /// <typeparam name="TOk"></typeparam>
+        /// <typeparam name="TNext"></typeparam>
+        /// <typeparam name="TError"></typeparam>
+        /// <param name="result"></param>
+        /// <param name="onNext"></param>
+        /// <param name="onError"></param>
+        /// <returns></returns>
+        public static IResult<TNext, TError> ThenLift<TOk, TNext, TError>(
+            this IResult<TOk, TError> result, 
+            Func<TOk, IResult<TNext,TError>> onNext, 
+            Func<TError, TError> onError)
+        {
+            return result.IsSuccess ?
+                onNext(result.AsSuccess)
+                : onError(result.Error).ToFailure<TNext, TError>() 
+                    as IResult<TNext,TError>;
+        }
+
         /// <summary>
         /// Bind
         /// </summary>
@@ -50,6 +71,25 @@ namespace Cat.Core.Result.Strict
         {
             return result.IsSuccess ?
                 onNext(result.AsSuccess).ToSuccess<TNext, TError>() : 
+                    result.Error.ToFailure<TNext, TError>() as IResult<TNext,TError>;
+        }
+
+        
+        /// <summary>
+        /// Bind - lifts IResult
+        /// </summary>
+        /// <typeparam name="TOk"></typeparam>
+        /// <typeparam name="TNext"></typeparam>
+        /// <typeparam name="TError"></typeparam>
+        /// <param name="result"></param>
+        /// <param name="onNext"></param>
+        /// <returns></returns>
+        public static IResult<TNext, TError> ThenLift<TOk, TNext, TError>(
+            this IResult<TOk, TError> result, 
+            Func<TOk, IResult<TNext,TError>> onNext)
+        {
+            return result.IsSuccess ?
+                onNext(result.AsSuccess) : 
                     result.Error.ToFailure<TNext, TError>() as IResult<TNext,TError>;
         }
 

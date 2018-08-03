@@ -40,5 +40,27 @@ namespace Cat.Test
             Assert.True(r.Error == "test");
         }
 
+        [Fact]
+        public void LooseResultTests_Reference_ThenLift_Success()
+        {
+            var r = new TestClass("test")
+                .ToSuccess<TestClass, string>()
+                .ThenLift(s => new AnotherTestClass(1)
+                    .ToSuccess<AnotherTestClass,string>());
+            Assert.True(r.IsSuccess);
+            Assert.True(r.AsSuccess.Property == 1);
+        }
+
+        [Fact]
+        public void LooseResultTests_Reference_ThenLift_Failure()
+        {
+            var r = new TestClass("test")
+                .ToSuccess<TestClass, string>()
+                .ThenLift(s => 
+                    "error".ToFailure<TestClass,string>());
+            Assert.False(r.IsSuccess);
+            Assert.True(r.Error == "error");
+        }
+
     }
 }
