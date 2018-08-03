@@ -8,27 +8,29 @@ C# abstract types - dotnetstandard 1.0
 ![](https://raw.githubusercontent.com/jkone27/cat/master/Pics/Cat01.PNG)
 
 ## Option
-Simulates a maybe type with generics and interface inheritance. IOption(T) exposes bool IsSome.
-Some(T) and None(T) both implement IOption(T). i kept the generic constraint on None(T) because 
-i think it can anyway help the compiler figure out and not mix up different "nones".
+Simulates a maybe type with generics and interface inheritance. IOption(T) exposes bool property .IsSome .
+Some(T) and None(T) both implement IOption(T). I kept the generic constraint on None(T) because 
+I think it can anyway help the compiler figure out and not mix up different "nones".
 
 ## Result
 Simulates Choice/Either type via generics and interface inheritance. 
 
 ### Result.Strict
-Strict version has more static "strictness", meaning you need to provide more type constraints, but then type inference will work its magic out when possible. IResult(TOk,TError) exposes bool .IsSuccess, TOk AsSuccess and TError Error. of course you will get a runtime exception if you try to access .Error on a Success(TOk,TError) and .AsSuccess on a Failure(TOk,TError) instance. Initially i made them available only on concrete types and removed them from IResult(TOk,TError), but then i had to create extension methods to basically provide the same mechanism, with the same chance of getting runtime error, so, i sticked with the easiest.
+Strict version has more static "strictness", meaning you need to provide more type constraints, but then type inference will work its magic out when possible. IResult(TOk,TError) exposes bool .IsSuccess, TOk .AsSuccess and TError .Error.  
+You will get a runtime exception if you try to access .Error on a Success(TOk,TError) and .AsSuccess on a Failure(TOk,TError) instance . 
 
 ### Result.Loose
 Loose is more dynamic, skipping some typechecks, it's a light-weight version,
-but be aware of your types (it my throw more at runtime). IResult exposes .IsSuccess and is implemented by Success(T) and Failure(T). you will need to cast or make use of the "as" operator when converting back to the concrete type from IResult, thus providing the generic type constraint.
+but be aware of your types, it is more likely to throw at runtime for invalid casts.  
+IResult exposes .IsSuccess and is implemented by Success(T) and Failure(T). you will need to cast or make use of the "as" operator when converting back to the concrete type from IResult, thus providing the generic type constraint.
 
 ## Then
-both option and result types were given a .Then extension method, which in a way (for the little i know) emulates the monadic
+Both option and result types were given a .Then extension method, which in a way (for the little i know) emulates the monadic
 bind operator, making available the "unwrapped" result to the next computation, or just returning to the end of the "pipeline" if
-the option was None, or if the result is Failure.
+the option is None, or if the result is Failure.
 
 ## ThenLift
-Loose results supports .ThenLift method for then the next step in the pipeline might return an IResult too (it/s not wrapped internally). If you try to pass an IResult returning function to a .Then method, as a continuation, it will throw you an ArgumentException "use ThenLift instead!".
+Loose results supports .ThenLift method for cases where the next step in the pipeline might want to return an IResult too, it's not wrapped internally, that's why I named it Lift (is going from a type T to a lifted-wrapped type W(T)). If you try to pass an IResult returning function to a .Then method, as a continuation, it will throw you an ArgumentException "use ThenLift instead!".
 
 ### Status
 [![build status](https://img.shields.io/travis/jkone27/cat.svg)](https://travis-ci.org/jkone27/cat)
