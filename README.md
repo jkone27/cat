@@ -44,8 +44,9 @@ Loose results supports `.ThenLift` method for cases where the next step in the p
 https://www.nuget.org/packages/CatCat/
 
 
+## Usage
 
-#### Option (usage)
+### Option
 
 Here is some basic usage of the `IOption<T>` type. Please note that `null` references, as well as `Nullable<T>` where `T` is a value type and `null` strings, are all converted into `None<T>`.
   
@@ -84,7 +85,7 @@ public class ServiceWhichMayFail
 }
 ```
 
-#### Loose Result (usage)
+### Loose Result
 
 Here is a wrapped version of that same service first:
 
@@ -132,9 +133,9 @@ else
 }
 ```
 
-#### Strict Result (usage)
+### Strict Result
 and now let's see the different behaviour of strict result, once we wrap again our "could-be" failing service,
-wrapped with a strict IResult, which has more static type checking, thus providing better type inference in method chains:  
+wrapped with a strict `IResult`, which has more static type checking, thus providing better type inference in method chains:  
 ```cs
 public class WrappedServiceStrict
 {
@@ -181,5 +182,4 @@ else
     Console.WriteLine($"failure: {ex}");
 }
 ```
-Thanks,
-and let me know any improvements/issues.
+Let me know any improvements/issues, feel free to pr.
