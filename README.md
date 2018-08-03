@@ -35,7 +35,7 @@ Both option and result types were given a `.Then` extension method, which in a w
 the option is `None`, or if the result is `Failure`.
 
 ## ThenLift
-Loose results supports `.ThenLift` method for cases where the next step in the pipeline might want to return an `IResult` too, it's not wrapped internally, that's why I named it Lift: is going from a type `T` to a lifted-wrapped type `W<T>`. If you try to pass an `IResult` returning function to a `.Then` method, as a continuation, it will throw you an `ArgumentException` "use ThenLift instead!".
+Results types supports `.ThenLift` method for cases where the next step in the pipeline might want to return an `IResult/IResult<TOk,TError>` too, it's not wrapped internally, that's why I named it Lift: is going from a type `T` to a lifted-wrapped type `W<T>`. If you try to pass an `IResult` returning function to a `.Then` method for the Loose type, as a continuation, it will throw you an `ArgumentException` "use ThenLift instead!".
 
 ### Status
 [![build status](https://img.shields.io/travis/jkone27/cat.svg)](https://travis-ci.org/jkone27/cat)
