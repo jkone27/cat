@@ -45,7 +45,7 @@ namespace Cat.Test
         public void LooseResultTests_Reference_Then_ArgumentExceptionIfIResult()
         {
             Action a = () => "test".ToFailure()
-                .Then<TestClass,IResult>(s => new AnotherTestClass(1).ToSuccess());
+                .Then<string,IResult>(s => new AnotherTestClass(1).ToSuccess());
             Assert.ThrowsAny<ArgumentException>(() => a());
         }
 
